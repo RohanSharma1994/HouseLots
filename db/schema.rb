@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905183006) do
+ActiveRecord::Schema.define(version: 20150906015045) do
 
-  create_table "sessions", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "session_tablets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id_id"
+    t.integer  "user_id"
     t.string   "key"
     t.boolean  "logged_in"
   end
-
-  add_index "sessions", ["user_id_id"], name: "index_sessions_on_user_id_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

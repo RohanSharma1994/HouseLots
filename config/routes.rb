@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  root           'sessions#new'
+  root           'sessions#index'
 
-  get 'login' => 'sessions#new'
+  get 'session' => 'sessions#new'
 
-  post 'login' => 'sessions#login'
+  post 'session' => 'sessions#login'
 
   post 'logout' => 'sessions#logout'
   

@@ -1,7 +1,18 @@
 <% provide(:title, "Log in") %>
+<%if flash[:notice] %>
+  <div class="text-center alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<% if @session_object and @session_object.logged_in %>
+  <form action="/logout" method="post" class="text-center">
+    <button type="submit" class="btn btn-danger btn-lg">Sign out</button>
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  </form>
+<% end %>
 <h1 class="text-center">Log in</h1>
 
-<form class="form-horizontal" method="POST" action="/login">
+<form class="form-horizontal" method="post" action="/session">
   <div class="form-group">
     <div class="col-sm-4 col-md-offset-4">
       <input type="email" name="username" class="form-control" id="inputEmail3" placeholder="Email/Username">
@@ -27,5 +38,4 @@
     </div>
   </div>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-
 </form>
